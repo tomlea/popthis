@@ -1,6 +1,14 @@
 #!/usr/bin/env ruby
 require File.join(File.dirname(__FILE__), *%w[.. lib pop_this])
 
+if ARGV.include?("-h") or ARGV.include?("--help")
+  puts "popthis: Serves a directory via pop3."
+  puts "    Usage: popthis [port] [path]"
+  puts "Default port: 2220"
+  puts "Default path: current working directory"
+  exit 1
+end
+
 if ARGV.first and ARGV.first =~ /^[0-9]{2,6}$$/
   port = ARGV.shift.to_i
 else
