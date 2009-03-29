@@ -200,10 +200,10 @@ module PopThis
         when /^UIDL$/
           msgid = 0
           msg = ''
-          @email.each do |e|
+          @emails.each do |e|
             msgid += 1
             next if e.deleted?
-            msg += "#{msgid} #{Digest::MD5.new.update(msg).hexdigest}\r\n"
+            msg += "#{msgid} #{Digest::MD5.hexdigest(e.email)}\r\n"
           end
           return true, "+OK\r\n#{msg}.\r\n";
         end
