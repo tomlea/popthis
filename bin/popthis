@@ -1,6 +1,12 @@
 #!/usr/bin/env ruby
 require File.join(File.dirname(__FILE__), *%w[.. lib pop_this])
 
-server = PopThis::POP3Server.new(2220)
+if ARGV.first and ARGV.first =~ /^[0-9]{2,6}$$/
+  port = ARGV.shift.to_i
+else
+  port = 2220
+end
+
+server = PopThis::POP3Server.new(port, ARGV.last || Dir.pwd)
 server.start
 server.join

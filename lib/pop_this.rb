@@ -5,6 +5,11 @@ module PopThis
     attr_writer :hostname
     attr_writer :dir
 
+    def initialize(port, dir)
+      super(port)
+      @dir = dir
+    end
+
     class Email
       attr_reader :filename
       attr_accessor :deleted
