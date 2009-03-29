@@ -3,16 +3,15 @@ require 'digest/md5'
 module PopThis
   class POP3Server < GServer
     attr_writer :hostname
+    attr_writer :dir
 
     class Email
       attr_reader :filename
       attr_accessor :deleted
 
-      def self.all
-        Dir.glob("*.txt").map{|f|
-          p f
-          Email.new(f)
-        }
+      def self.all(dir = nil)
+        dir ||= Dir.pwd
+        Dir.glob("#{ dir }/*").reject{|fn| fn =~ /^\./ }.map{|fn| Email.new(fn) }
       end
 
       def self.delete(email)
@@ -55,7 +54,7 @@ module PopThis
     end
 
     def emails
-      @emails = Email.all()
+      @emails = Email.all(@dir)
     end
 
     def stat
