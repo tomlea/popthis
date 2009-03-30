@@ -16,7 +16,7 @@ module PopThis
 
       def self.all(dir = nil)
         dir ||= Dir.pwd
-        Dir.glob("#{ dir }/*").reject{|fn| fn =~ /^\./ }.map{|fn| Email.new(fn) }
+        Dir.glob("#{ dir }/*").reject{|fn| fn =~ /^\./ || File.directory?(fn) }.map{|fn| Email.new(fn) }
       end
 
       def self.delete(email)
