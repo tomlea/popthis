@@ -6,20 +6,26 @@ So you downloaded [inaction_mailer](http://github.com/cwninja/inaction_mailer), 
 
 Now you want to preview your e-mails?!? You people are never happy!
 
-Well, I'm a little tipsy, so I'm going to be nice (you can be nice back, but that's another story), and I'm going to let you get at your mails with POP3!
-
-Wheeeeeeeee!
-
-Also, I stole most of the code from [http://snippets.dzone.com/posts/show/5906](http://snippets.dzone.com/posts/show/5906).
-
-So, erm, yeah.
-
-It will accept any username, and any password, and will only ever serve up the given dir.
+Well, I'm a little tipsy, so I'm going to be nice, and I'm going to let you get at your mails with POP3!
 
 I hope you like it. I do!
 
-## Usage
+## Usage:
 
-    Usage: popthis [port] [path]
-    Default port: 2220
-    Default path: current working directory
+Start the server:
+
+    popthis tmp/mails/
+
+Now, configure your mail client as follows:
+
+* Server: **localhost**
+* Protocol: **POP3**
+* Port: **2220**
+* Username: anything
+* Password: anything
+
+You should now be able to see the contents of your tmp/mails folder in your mail client!
+
+## Origins:
+
+I stole most of the code from [here](http://snippets.dzone.com/posts/show/5906)... so credit where credit's due.
