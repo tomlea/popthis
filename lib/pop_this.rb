@@ -2,20 +2,18 @@ require 'gserver'
 require 'digest/md5'
 module PopThis
   class POP3Server < GServer
-    attr_writer :hostname
-    attr_writer :dir
 
-    def initialize(port, dir)
-      super(port)
-      @dir = dir
+    def initialize(options)
+      @hostname = options[:host]
+      super(options[:port])
+      @dir = options[:path]
     end
 
     class Email
       attr_reader :filename
       attr_accessor :deleted
 
-      def self.all(dir = nil)
-        dir ||= Dir.pwd
+      def self.all(dir)
         Dir.glob("#{ dir }/*").reject{|fn| fn =~ /^\./ || File.directory?(fn) }.map{|fn| Email.new(fn) }
       end
 
