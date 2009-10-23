@@ -10,6 +10,10 @@ Well, I'm a little tipsy, so I'm going to be nice, and I'm going to let you get 
 
 I hope you like it. I do!
 
+## Instalation:
+
+    gem install popthis -s http://gemcutter.org
+
 ## Usage:
 
 Start the server:
