@@ -15,7 +15,7 @@ end
 
 spec = Gem::Specification.new do |s|
   s.name        = "popthis"
-  s.version     = "0.2"
+  s.version     = "0.3"
   s.summary     = "Run a pop server serving up the current dir."
   s.description = "Run a pop server serving up the current dir."
 
@@ -23,6 +23,7 @@ spec = Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.test_files   = Dir[*['test/**/*_test.rb']]
   s.bindir       = 'bin'
+  s.executables       = FileList["bin/*"].map { |f| File.basename(f) }
 
   s.has_rdoc         = true
   s.extra_rdoc_files = ["README.markdown"]
