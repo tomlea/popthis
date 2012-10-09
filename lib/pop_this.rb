@@ -151,7 +151,7 @@ module PopThis
         when /^RETR (\d+)$/
           msg = retr($1)
           if msg
-            msg = "+OK #{msg.length} octets\r\n" + msg
+            msg = "+OK #{msg.length} octets\r\n" + msg.gsub(/^\./, '..')
             msg += "\r\n.\r\n"
           else
             msg = "-ERR no such message\r\n"
